@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>boston_housing</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>boston_housing-Copy1</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -12196,8 +12196,7 @@ Standard deviation of prices: $165171.131544
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-We split the data into training and testing subsets to assess performance of model.
-If whole dataset is used in training, overfitting will occur. model will not generalize as it already knows the answers. Similarly, if we use the entire (or major) dataset for testing, the model has nothing(or very few datapoints) left forlearning resulting in underfitting.</p>
+We split the data into training and testing subsets to assess performance of model. After training the data on training set, we check if model is performing well on testing set to evaluate it's performance on unseen data.</p>
 
 </div>
 </div>
@@ -13815,6 +13814,8 @@ Graph shows Max-depth of 4 would result in the best generalized model.</p>
 <p><strong>Answer: </strong></p>
 <p>GridSearch is an exhaustive search over specified parameter values for an estimator, used to search the best combination of parameters from a grid with possible parameter values. 
 It can be used to optimize learning algorithm by returning the best classifier for the combination of provided parameters.</p>
+<p>Model parameters are the properties of the training data that are learnt during training by the model such as Weights or Coefficients of independent variables.
+Hyper-parameters are those which we supply to the model, for example: Learning Rate, Activation Function in NN, Depth of tree in Decision trees etc.</p>
 
 </div>
 </div>
@@ -13845,13 +13846,15 @@ It can be used to optimize learning algorithm by returning the best classifier f
 <p>Cross-validation is a resampling procedure used to evaluate machine learning models on a limited data sample.
 The general procedure is as follows:</p>
 <p>Shuffle the dataset randomly.
-Split the dataset into k groups
+Split the dataset into k groups.
 For each unique group:
-Take the group as a hold out or test data set
-Take the remaining groups as a training data set
-Fit a model on the training set and evaluate it on the test set
-Save the evaluation score
-Summarize the skill of the model using the sample of model evaluation scores</p>
+Take the group as a hold out or test data set.
+Take the remaining groups as a training data set.
+Fit a model on the training set and evaluate it on the test set.
+Save the evaluation score.
+Summarize the skill of the model using the sample of model evaluation scores.</p>
+<p>In context of grid search: we take one hyperparameter combination from the grid and keep it constant for one round of whole k-fold cross validation process: the whole splitting into kfolds, training and validating on one fold and so on. This helps us in getting an unbiased estimate of model evaluation metric which helps us decide in a more unbiased way, whether the given combination of hyperparameters is best for the particular data set or not. This process is repeated for all combinations of hyperparameters in the grid.</p>
+<p>Using the train-test split method to evaluate model or choose best hyper parameters has a risk. The data set in the fixed train-test method may result in optimum hyper-parameter combination which is good for only that particularly arranged training dataset. To get rid of this bias towards a specific arrangement and composition of data, k-fold becomes useful.</p>
 
 </div>
 </div>
